@@ -76,6 +76,14 @@ $settingsDirectionLeft.addEventListener('change', () => {
     if ($settingsDirectionLeft.checked) settings.flagReverse = true;
 });
 
+$settingsOptionsCrop.addEventListener('change', () => {
+    settings.flagCrop = !!$settingsOptionsCrop.checked;
+});
+
+$settingsOptionsFlatten.addEventListener('change', () => {
+    settings.flagFlatten = !!$settingsOptionsFlatten.checked;
+});
+
 const colorParse = (string) => {
     if (string == null) return null;
 
