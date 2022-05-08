@@ -1,0 +1,18 @@
+{
+  "name": "gifsave-website",
+  "version": "0.0.0",
+  "private": true,
+  "source": "src/index.html",
+  "scripts": {
+    "serve": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans": "^4.5.9",
+    "@picocss/pico": "^1.5.0",
+    "patella": "^2.2.2"
+  }
+}

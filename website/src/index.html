@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <link rel="preload" as="image" href="./assets/vikkie.png">
+    <link rel="preload" as="object" href="./assets/svg-placeholder.svg">
+    <link rel="preload" as="object" href="./assets/svg-loading.svg">
+    <link rel="preload" as="object" href="./assets/svg-heart.svg">
+    <link rel="icon" type="image/x-icon" sizes="64x64 48x48 32x32 24x24 16x16" href="./assets/favicon/favicon.ico">
+    <link ref="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link ref="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link ref="icon" type="image/png" sizes="128x128" href="./assets/favicon/favicon-128x128.png">
+    <meta name="description" content="Create spinning gifs from static images online">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@luavixen">
+    <meta name="twitter:site" content="@luavixen">
+    <meta name="twitter:image" content="https://foxgirl.dev/file/gifspin-banner.jpg?nonce=1000">
+    <meta property="og:title" content="Gifspin">
+    <meta property="og:description" content="Create spinning gifs from static images online">
+    <meta property="og:image" content="https://foxgirl.dev/file/gifspin-banner.jpg?nonce=1000">
+    <meta property="og:url" content="https://spin.foxgirl.dev/">
+    <title>Gifspin</title>
+  </head>
+  <body>
+
+    <main class="container">
+
+      <article id="gs-app" class="grid">
+
+        <form id="gs-settings">
+          <label for="gs-settings-file" class="gs-noselect">Source image</label>
+          <input id="gs-settings-file" type="file" accept="image/png,image/jpeg,image/gif,image/webp">
+
+          <label for="gs-settings-speed" class="gs-noselect">Spin speed</label>
+          <input id="gs-settings-speed" type="range" min="0" max="6" value="2">
+
+          <fieldset id="gs-settings-direction">
+            <legend class="gs-noselect">Spin direction</legend>
+
+            <label for="gs-settings-direction-right" class="gs-noselect">
+              <input id="gs-settings-direction-right" type="radio" name="direction" value="right">
+              <span>Clockwise</span>
+            </label>
+
+            <label for="gs-settings-direction-left" class="gs-noselect">
+              <input id="gs-settings-direction-left" type="radio" name="direction" value="left">
+              <span>Counter-clockwise</span>
+            </label>
+          </fieldset>
+
+          <fieldset id="gs-settings-options">
+            <legend class="gs-noselect">Options</legend>
+
+            <label for="gs-settings-options-crop" class="gs-noselect">
+              <input id="gs-settings-options-crop" type="checkbox" role="switch">
+              <span>Crop to square</span>
+            </label>
+
+            <label for="gs-settings-options-flatten" class="gs-noselect">
+              <input id="gs-settings-options-flatten" type="checkbox" role="switch">
+              <span>Add background color</span>
+            </label>
+          </fieldset>
+
+          <fieldset id="gs-settings-color">
+            <legend class="gs-noselect">Background color</legend>
+            <input id="gs-settings-color-picker" type="color" aria-label="Color selector">
+            <input id="gs-settings-color-text" type="text" aria-label="Color code">
+          </fieldset>
+
+          <div id="gs-settings-submit" class="grid">
+            <button id="gs-settings-submit-apply" type="submit">Apply</button>
+            <button id="gs-settings-submit-download" type="submit" class="secondary">Download</button>
+          </div>
+        </form>
+
+        <div id="gs-preview" class="gs-noselect">
+          <div id="gs-preview-overlay" class="gs-hidden" aria-hidden="true">
+            <object id="gs-preview-icon-placeholder" class="gs-hidden" type="image/svg+xml" data="./assets/svg-placeholder.svg" width="48" height="48"></object>
+            <object id="gs-preview-icon-loading" class="gs-hidden" type="image/svg+xml" data="./assets/svg-loading.svg" width="48" height="48"></object>
+          </div>
+          <div id="gs-preview-error" class="gs-hidden"><pre><code id="gs-preview-error-content"></code></pre></div>
+          <img id="gs-preview-image" class="gs-hidden" src="./assets/vikkie.png" aria-label="Image preview">
+        </div>
+
+      </article>
+
+      <footer id="gs-footer" class="gs-noselect">
+        <small>
+          <span>made with</span>
+          <span><object id="gs-footer-heart" type="image/svg+xml" data="./assets/svg-heart.svg" aria-label="love"></object></span>
+          <span>by</span>
+          <span><a id="gs-footer-twitter" href="https://twitter.com/luavixen">@luavixen</a></span>
+        </small>
+      </footer>
+
+    </main>
+
+    <script type="module" src="./scripts/index.js"></script>
+
+  </body>
+</html>

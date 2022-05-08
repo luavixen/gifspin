@@ -251,7 +251,7 @@ func nanoid() string {
 	return nanoidEncode.EncodeToString(b)
 }
 
-var replaceUnsafePattern = regexp.MustCompile("[a-zA-Z0-9.~_-]")
+var replaceUnsafePattern = regexp.MustCompile("[^a-zA-Z0-9.~_-]")
 
 func replaceUnsafe(s string) string {
 	return replaceUnsafePattern.ReplaceAllString(s, "_")
@@ -311,7 +311,7 @@ func sendError(res http.ResponseWriter, err error) {
 }
 
 func sendErrorMessage(res http.ResponseWriter, status int, message string) {
-	res.Header().Set("X-Error", message)
+	res.Header().Set("X-Spin-Error", message)
 	sendJSON(res, status, map[string]string{"err": message})
 }
 
@@ -352,6 +352,8 @@ func handleUpload(res http.ResponseWriter, req *http.Request) {
 
 	token := generateTokenInput(extension)
 
+	res.Header().Set("X-Spin-Token", token)
+
 	var err error
 
 	tempPath := getPathFromToken(settings.PathTemp, token)
@@ -382,11 +384,23 @@ func handleSpin(res http.ResponseWriter, req *http.Request) {
 	}
 	tokenOutput = generateTokenOutput(tokenInput)
 
+	pathInput := getPathFromToken(settings.PathTemp, tokenInput)
+	pathOutput := getPathFromToken(settings.PathTemp, tokenOutput)
+
+	res.Header().Set("X-Spin-Token", tokenInput)
+	res.Header().Set("X-Spin-TokenOutput", tokenOutput)
+
+	var err error
+
+	_, err = os.Stat(pathInput)
+	if errors.Is(err, os.ErrNotExist) {
+		sendErrorMessage(res, http.StatusNotFound, "query parameter \"file\" not found")
+		return
+	}
+
 	ctx := req.Context()
 
 	body := newContextReader(http.MaxBytesReader(res, req.Body, 65536), ctx)
-
-	var err error
 
 	var opts *CompositeOptions
 	var task *CompositeTask
@@ -405,8 +419,8 @@ func handleSpin(res http.ResponseWriter, req *http.Request) {
 
 	task = new(CompositeTask)
 	task.Options = opts
-	task.PathInput = getPathFromToken(settings.PathTemp, tokenInput)
-	task.PathOutput = getPathFromToken(settings.PathTemp, tokenOutput)
+	task.PathInput = pathInput
+	task.PathOutput = pathOutput
 	task.PathBinary = settings.PathBinary
 
 	err = dispatch.Execute(ctx, task)

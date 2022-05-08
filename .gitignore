@@ -1,12 +1,7 @@
 **/.vscode
-**/.gitignore
-**/.dockerignore
-**/.editorconfig
 **/node_modules
 
 core/build
 server/main
 website/.parcel-cache
 website/dist
-
-Dockerfile

@@ -1,0 +1,93 @@
+@import "npm:@picocss/pico";
+@import "npm:@fontsource/noto-sans";
+
+:root {
+    --font-family: "Noto Sans", "Cantarell", sans-serif;
+}
+
+.gs-hidden {
+    display: none !important;
+}
+
+.gs-noselect {
+    user-select: none;
+}
+
+#gs-app {
+    margin: 0;
+    padding: var(--block-spacing-horizontal);
+
+    --grid-spacing-app: calc(var(--spacing) * 2);
+    grid-column-gap: var(--grid-spacing-app);
+    grid-row-gap: var(--grid-spacing-app);
+}
+
+#gs-settings {
+    margin: 0;
+    padding: 0;
+}
+
+#gs-settings-color {
+    display: flex;
+}
+
+#gs-settings-color-picker {
+    width: 4rem;
+    margin-right: var(--grid-spacing-horizontal);
+}
+
+#gs-settings-submit {
+    margin-bottom: calc(var(--spacing) * -1);
+}
+
+#gs-preview, #gs-preview-overlay {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 64px;
+    min-height: 64px;
+}
+
+#gs-preview-overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/*
+#gs-preview-icon-loading {
+    animation: spinner 2s linear infinite;
+}
+*/
+
+#gs-preview-error {
+    max-width: 100%;
+}
+
+#gs-preview-error-content {
+    white-space: pre-wrap;
+}
+
+#gs-preview-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+#gs-footer {
+    display: flex;
+    justify-content: center;
+    margin: calc(var(--spacing) * 2) 0;
+    color: #6c757d !important;
+}
+
+#gs-footer-heart {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: sub;
+}
+
+#gs-footer-twitter {
+    color: inherit !important;
+}
