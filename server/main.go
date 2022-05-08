@@ -357,7 +357,7 @@ func handleUpload(res http.ResponseWriter, req *http.Request) {
 	var err error
 
 	tempPath := getPathFromToken(settings.PathTemp, token)
-	temp, err := os.OpenFile(tempPath, os.O_CREATE | os.O_WRONLY, 0644)
+	temp, err := os.OpenFile(tempPath, os.O_CREATE | os.O_WRONLY, 0664)
 	if err != nil {
 		sendError(res, fmt.Errorf("handleUpload os.OpenFile: %w", err))
 		return
