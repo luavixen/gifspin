@@ -577,14 +577,14 @@ func main() {
 		}()
 
 		if err := server.Shutdown(ctxTimeout); err != nil {
-			logger.Println(fmt.Sprintf("Server shutdown failed, exiting: %s", err))
+			logger.Println(fmt.Sprintf("Server shutdown failed, exiting: %v", err))
 		}
 
 		logger.Println("Server shutdown complete")
 	}()
 
 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-		logger.Println(fmt.Printf("Server encountered unexpected error: %v", err))
+		logger.Println(fmt.Sprintf("Server encountered unexpected error: %v", err))
 	} else {
 		logger.Println("Server closed")
 	}
