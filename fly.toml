@@ -1,8 +1,10 @@
 app = 'gifspin'
 primary_region = 'sea'
 
+swap_size_mb = 2048
+
 [[vm]]
-  memory = '1gb'
+  memory = '256mb'
   cpu_kind = 'shared'
   cpus = 1
 
@@ -21,3 +23,10 @@ primary_region = 'sea'
   auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
+
+[[http_service.checks]]
+  grace_period = "10s"
+  interval = "30s"
+  timeout = "5s"
+  method = "GET"
+  path = "/"
