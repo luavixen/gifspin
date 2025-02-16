@@ -481,7 +481,7 @@ func main() {
 	settings.Limits.FrameDelayMin = getEnvInt("LIMIT_MIN_FRAME_DELAY", 5)
 	settings.Limits.FrameDelayMax = getEnvInt("LIMIT_MAX_FRAME_DELAY", 1000)
 
-	settings.PathTemp = getEnv("PATH_TEMP", "/data")
+	settings.PathTemp = getEnv("PATH_TEMP", "/tmp")
 	settings.PathPublic = getEnv("PATH_PUBLIC", "/app/public")
 	settings.PathBinary = getEnv("PATH_BINARY", "/app/bin/gifspin-core")
 

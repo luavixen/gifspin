@@ -1,5 +1,5 @@
 app = 'gifspin'
-primary_region = 'sea'
+primary_region = 'yyz'
 
 swap_size_mb = 2048
 
@@ -8,11 +8,8 @@ swap_size_mb = 2048
   cpu_kind = 'shared'
   cpus = 1
 
-[build]
-
 [env]
   LISTEN = ':3000'
-  PATH_TEMP = '/tmp'
   OPT_DISPATCH_SIZE = '1'
   OPT_SHUTDOWN_MS = '20000'
   OPT_TIMEOUT_MS = '15000'
@@ -25,8 +22,8 @@ swap_size_mb = 2048
   min_machines_running = 0
 
 [[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  timeout = "5s"
-  method = "GET"
-  path = "/"
+  grace_period = '3s'
+  interval = '30s'
+  timeout = '5s'
+  method = 'GET'
+  path = '/'

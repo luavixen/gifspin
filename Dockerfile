@@ -23,4 +23,6 @@ COPY --from=0 /app/build/website/dist /app/public
 
 VOLUME /data/
 
+EXPOSE 3000
+
 CMD ["/app/bin/gifspin-server"]
